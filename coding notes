@@ -1,0 +1,24 @@
+March 9
+
+I used this codes  creating books and disply it onto the add_book.html
+instead of using   # return redirect(url_for('home')).
+The codes I tried have a problem. When I refreshed, the exisitng codes are added
+. Therefore, It s not always good idea to use render template and create
+separate add_book.html and display all records. Instead, I will use
+return redirect(url_for()).
+@app.route('/add', methods=['POST'])
+def add_book():
+    if request.method =='POST':
+        book = Book(
+            title=request.form.get('title'),
+            author=request.form.get('author'),
+            price=request.form.get('price'))
+        db.session.add(book)
+        db.session.commit()
+        # return redirect(url_for('home'))
+        books = Book.query.all()
+    return render_template('index.html', books= books)
+===================================
+I had trouble submitting a new book to add inside the modal.
+I found the reason why. The type of the button for submit should be 'type=submit'.
+===================================
