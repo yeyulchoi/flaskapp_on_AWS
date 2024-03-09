@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
+import secrets
 import mysql.connector
 
 
@@ -9,6 +10,7 @@ app = Flask(__name__)
 #new mysql db.
 app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:''@localhost/flask_aws2'
 app.config['SQLALCHEMY_TRACK_MODIFICATION']=False
+app.config['SECRET_KEY']=secrets.token_hex(16)
 db = SQLAlchemy(app)
 
 
@@ -37,6 +39,7 @@ def add_book():
             price=request.form.get('price'))
         db.session.add(book)
         db.session.commit()
+        flash('New book has been updated.')
         return redirect(url_for('home'))
 
 

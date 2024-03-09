@@ -3,8 +3,15 @@
 {% block title%}Home{% endblock%}
 
 {% block content %}
-
-
+{%with messages = get_flashed_messages()%}
+  {%if messages %}
+    <ul>
+      {% for message in messages: %}
+      <li>{{message}}</li>
+      {%endfor%}
+    </ul>
+  {% endif %}
+{% endwith %}
  <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand">
@@ -40,7 +47,7 @@
             </form>     
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
             
           </div>
         </div>
