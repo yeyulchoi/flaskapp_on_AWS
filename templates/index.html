@@ -3,8 +3,46 @@
 {% block title%}Home{% endblock%}
 
 {% block content %}
-<div class="container mt-5" >
-  <h1>FlaskAPP for Books</h1>
+
+
+ <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">
+      <img src="{{url_for('static',filename='images/flask.svg')}}" alt="" width="50">Flask
+    </a>
+    <button class="btn btn-success" type="submit" data-bs-toggle="modal" data-bs-target="#add-modal">Add Book</button>
+    <!-- modal -->
+    <div class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Book</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">  
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Title</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="title" required="1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Author</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="author" required="1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Price</label>
+              <input type="number" class="form-control" id="exampleFormControlInput1"  name="price" required="1">
+            </div>        
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Add Book</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container" >
     <table class="table">
       <thead>
         <tr class="table-secondary">
@@ -13,7 +51,6 @@
           <th scope="col">Author</th>
           <th scope="col">Price</th>
           <th scope="col">Action</th>
-          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -24,7 +61,8 @@
           <td>{{book.author}}</td>
           <td>{{book.price}}</td>
           <td><a href="#" class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Update</a>
-          <a href="#" class="btn btn-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Delete</a></td>
+          <a href="#" class="btn btn-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Delete</a>
+          </td>
         </tr>
       {%endfor%}
       </tbody>

@@ -5,7 +5,7 @@ import mysql.connector
 
 app = Flask(__name__)
 #Old sqlite db.
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///flaskaws.db'
+# app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///flaskaws.db'
 #new mysql db.
 app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:''@localhost/flask_aws2'
 app.config['SQLALCHEMY_TRACK_MODIFICATION']=False
