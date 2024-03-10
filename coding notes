@@ -22,3 +22,20 @@ def add_book():
 I had trouble submitting a new book to add inside the modal.
 I found the reason why. The type of the button for submit should be 'type=submit'.
 ===================================
+request.form.get(X)
+the X is the value of the name in form of html
+The name value is the key to the value
+====================
+def update_book():
+    if request.method == "POST":
+        book_id = request.form.get('id')
+        the_data = Book.query.get(book_id)
+        if the_data:
+            the_data.title = request.form['title']
+            the_data.author = request.form['author']
+            the_data.price = request.form['price']
+            db.session.commit()
+
+After updating, do not use db.session.add().
+Just do the db.session.commit()
+================================

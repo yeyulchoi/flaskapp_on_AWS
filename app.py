@@ -39,7 +39,23 @@ def add_book():
             price=request.form.get('price'))
         db.session.add(book)
         db.session.commit()
-        flash('New book has been updated.')
+        flash('New book added successfully.')
+        return redirect(url_for('home'))
+
+
+@app.route('/update', methods=['POST'])
+def update_book():
+    if request.method == "POST":
+        book_id = request.form.get('id')
+        the_data = Book.query.get(book_id)
+        if the_data:
+            the_data.title = request.form['title']
+            the_data.author = request.form['author']
+            the_data.price = request.form['price']
+            db.session.commit()
+            flash('Book updated successfully.')
+        else:
+            flash('Book not found.')
         return redirect(url_for('home'))
 
 

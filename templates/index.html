@@ -3,15 +3,7 @@
 {% block title%}Home{% endblock%}
 
 {% block content %}
-{%with messages = get_flashed_messages()%}
-  {%if messages %}
-    <ul>
-      {% for message in messages: %}
-      <li>{{message}}</li>
-      {%endfor%}
-    </ul>
-  {% endif %}
-{% endwith %}
+
  <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand">
@@ -57,6 +49,17 @@
   </div>
 </nav>
 <div class="container" >
+     {%with messages = get_flashed_messages()%}
+  {%if messages %}
+      {% for message in messages: %}
+            <div class="alert alert-success" role="alert">
+                <p>{{message}}</p>
+            </div>
+      {%endfor%}
+  {% endif %}
+{% endwith %}
+</div>
+<div class="container" >
     <table class="table">
       <thead>
         <tr class="table-secondary">
@@ -67,6 +70,7 @@
           <th scope="col">Action</th>
         </tr>
       </thead>
+
       <tbody>
       {%for book in books:%}
         <tr>
@@ -74,13 +78,53 @@
           <td>{{book.title}}</td>
           <td>{{book.author}}</td>
           <td>{{book.price}}</td>
-          <td><a href="#" class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Update</a>
+          <td><a href="update/{{book.id}}" class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                      data-bs-toggle="modal" data-bs-target="#edit-modal{{book.id}}">Update</a>
           <a href="#" class="btn btn-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Delete</a>
           </td>
         </tr>
+<!--   Update a book-->
+
+        <div class="modal fade" id="edit-modal{{book.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" >Edit a Book</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <form action="{{url_for('update_book')}}" method="POST">
+                <div class="form-group">
+                  <label for="title" class="form-label">Title</label>
+                  <input type="hidden" class="form-control" name="id" value="{{book.id}}">
+                  <input type="text" class="form-control" name="title" value="{{book.title}}" required="1">
+                </div>
+                <div class="form-group">
+                  <label for="author" class="form-label">Author</label>
+                  <input type="text" class="form-control"  name="author" value="{{book.author}}" required="1">
+                </div>
+                <div class="form-group">
+                  <label for="price" class="form-label">Price</label>
+                  <input type="number" class="form-control" value="{{book.price}}" name="price" required="1">
+                </div>
+                <div>
+                  <button type="submit" class="btn btn-primary">Edit Book</button>
+                </div>
+               </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+            </div>
+          </div>
+        </div>
+
       {%endfor%}
       </tbody>
+
     </table>
 
 </div>
 {% endblock %}
+
+<!--update model-->
