@@ -80,7 +80,7 @@
           <td>{{book.price}}</td>
           <td><a href="update/{{book.id}}" class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                       data-bs-toggle="modal" data-bs-target="#edit-modal{{book.id}}">Update</a>
-          <a href="#" class="btn btn-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Delete</a>
+          <a href="delete/{{book.id}}" onclick="return confirm('are you sure to delete?')" class="btn btn-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Delete</a>
           </td>
         </tr>
 <!--   Update a book-->
@@ -93,7 +93,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               <form action="{{url_for('update_book')}}" method="POST">
+               <form action="{{url_for('update')}}" method="POST">
                 <div class="form-group">
                   <label for="title" class="form-label">Title</label>
                   <input type="hidden" class="form-control" name="id" value="{{book.id}}">

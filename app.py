@@ -44,7 +44,7 @@ def add_book():
 
 
 @app.route('/update', methods=['POST'])
-def update_book():
+def update():
     if request.method == "POST":
         book_id = request.form.get('id')
         the_data = Book.query.get(book_id)
@@ -57,6 +57,19 @@ def update_book():
         else:
             flash('Book not found.')
         return redirect(url_for('home'))
+
+@app.route('/delete/<int:id>', methods=['GET'])
+def delete(id):
+    book = Book.query.get(id)
+    if book:
+        db.session.delete(book)
+        db.session.commit()
+        flash('Book deleted successfully.')
+    else:
+        flash('Book not found.')
+    return redirect(url_for('home'))
+
+
 
 
 
