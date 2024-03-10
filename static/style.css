@@ -1,0 +1,272 @@
+*{
+    margin:0;
+    padding:0;
+    color:F1B4BB;
+}
+ul >li{
+    list-style: none;
+}
+   
+ 
+body{
+    background-color:#FDF0F0;
+    color:#F1B4BB;
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;}
+
+.main-content{
+    min-height:100vh;
+    width:80%;    
+    margin:4rem auto;
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+  
+    /* grid-template-rows:repeat(10,1fr); */
+
+}
+
+.left-section{
+    grid-column: span 2;
+    height:100%;
+    background-color:#132043;
+    
+}
+
+.right-section{
+    grid-column: span 5;
+    height:100%;
+    background-color:#1F4172 ;
+}
+
+.left-content{
+   
+    padding:1rem 2rem;
+}
+.profile{
+    width:100%;
+    border-bottom: 1px solid #FDF0F0;;
+}
+.image{
+    padding-left:4rem;
+}
+.profile img{
+    width:80%;
+    text-align: center;
+    border: 8px solid rgb(242, 192, 255);
+    border-radius: 50%;
+    
+}
+
+.name{
+    font-size:2.5rem;
+    color: white;
+    text-align: center;
+    text-transform:uppercase;
+    letter-spacing: 1px;
+    padding: 1.2rem 0;
+
+}
+
+.career{
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FDF0F0;
+    padding-bottom: 1rem;
+}
+
+.main-title{
+    font-size:1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #FDF0F0;
+    padding-top: 2rem;
+    text-align: center;
+}  
+
+.contact-info ul{
+    padding: 1rem 2rem;
+    
+    list-style: none;
+}
+.contact-info li{
+    padding-bottom: 10px;
+    font-size:1.2rem;
+}
+.contact-info li i{
+    padding-right:1rem;
+    color: #6895D2;
+}
+
+.skill-section ul{
+    padding-top:2rem;
+}
+/* .skills-section ul li{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 4rem 0;
+    
+} */
+.progress-bar{
+    width: 100%;
+    height: .4rem;
+    background-color: #2f81ed5b;
+    position: relative;
+    border-radius: 12px;
+}
+.progress{
+    position:absolute;
+    height:100%;
+    left:0;
+    border-radius: 18px;
+    background-color:orange;
+}
+.python-progress{
+    width:70%;
+}
+.web-scrapting-progress{
+    width:80%
+}
+.flask-progress{
+    width:70%;
+}
+.django-progress{
+    width:80%
+}
+.db-progress{
+    width:70%;
+}
+.c-progress{
+    width:80%
+}
+.html-progress{
+    width:70%;
+}
+.github-progress{
+    width:80%
+}
+
+/* reference */
+.referee{
+    padding:1.2rem 2rem;
+}
+.sub-title{
+    font-size: 1.3rem;
+}
+.reference-section li, .sub-para{
+    padding-top:.5rem;
+}
+
+/* right section */
+
+
+.right-main-content{
+    padding:2rem 3rem;
+}
+.right-title{
+    letter-spacing:3px;
+    text-transform: uppercase;
+    color:#04D9FF;
+    margin-bottom:1.2rem;
+    position:relative;
+}
+.right-title::after{
+    content:"";
+    position:absolute;
+    background-color: #ccc;
+    height:.2rem;
+    width:60%;
+    right:0;
+    top:50%;
+    /* transform:translateY(-50%); */
+
+}
+
+.para{
+    line-height:1.6rem;
+    font-size: 1.1rem;
+    color:white;
+    text-align: justify;
+}
+
+.sect{
+    padding-bottom: 2rem;;
+}
+
+.timeline{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    padding-bottom: 2rem;
+}
+
+.tl-title{
+    letter-spacing: 3px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+
+}
+.tl-title-2{
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+    color: #2D9CDB;
+    text-transform: uppercase;
+}
+.gpa{
+    position:relative;
+}
+.gpa::after{
+    content:"GPA 3.79";
+    position:absolute;
+    right:0;
+    color:white;
+    font-size: 1rem;
+}
+.tl-content{
+    border-left: 1px solid #ccc;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+@media screen and (max-width:823px){
+    .right-title::after{
+        width: 40%;
+    }
+}
+@media screen and (max-width:681px){
+    .right-title::after{
+        width: 30%;
+    }
+}
+@media screen and (max-width:780px){
+    .timeline{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media screen and (max-width:780px){
+    .left-section{
+        grid-column: span 3;
+    }
+    .right-section{
+        grid-column: span 4;
+    }
+}
+@media screen and (max-width:1200px){
+    .main-content{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .profile img{
+        width: 40%;
+    }
+}
+@media screen and (max-width:700px){
+    .profile img{
+        width: 60%;
+    }
+}
+@media screen and (max-width:390px){
+    .name{
+        font-size: 1.5rem;
+    }
+}
